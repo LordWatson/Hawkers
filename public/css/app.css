@@ -1,0 +1,13 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+body {
+  background: #EAEDED;
+  font-family: "Nunito", sans-serif;
+}
+
+.card-body {
+  padding: 1.5rem 1.5rem;
+}
+
+nav {
+  padding: 1%;
+}
