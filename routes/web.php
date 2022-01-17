@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/logout', function(){
+    Auth::logout();
+    return Redirect::to("/login")
+        ->with('message', array('type' => 'success', 'text' => 'You have successfully logged out'));
 });
 
 Route::group(['middleware' => 'auth'], function () {
+
     Route::get('/dashboard', function () {
-        return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('user-dashboard');
+    Route::get('/admin-dashboard', [\App\Http\Controllers\AdminDashboardController::class, 'index'])->name('admin-dashboard');
 });
 
 require __DIR__.'/auth.php';

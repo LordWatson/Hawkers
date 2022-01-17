@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url('/') }}">
-            <i class="fas fa-dumbbell"></i> <span>Coach<strong>Strong</strong></span>
+        <a class="navbar-brand" href="{{ url('/dashboard') }}">
+            <i class="fas fa-dumbbell"></i> <span><strong>Hawkers</strong>Gym</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -52,6 +52,10 @@
                             @endif
                             <a class="dropdown-item" href="/notifications">Notifications <small>({{ count(Auth::user()->unreadNotifications) }})</small></a>
                             <a class="dropdown-item" href="/account">Account</a>
+                            @if(Auth::user()->isAdmin())
+                                <a class="dropdown-item" href="/admin-dashboard">Admin Dashboard</a>
+                                <a class="dropdown-item" href="/users">Users</a>
+                            @endif
                             <a class="dropdown-item" href="/logout">
                                 {{ __('Logout') }}
                             </a>

@@ -20,7 +20,7 @@
     <livewire:scripts />
 </head>
 <body>
-@include('layouts.navigation')
+@include('elements.navigation')
 <div class="container-fluid">
     <div class="row">
         <main role="main" class="ml-sm-auto col-12 pt-3 px-4">
