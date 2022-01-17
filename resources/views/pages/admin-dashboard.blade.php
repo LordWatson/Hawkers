@@ -9,15 +9,28 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header">Following</div>
+                    <div class="card-header">Users</div>
                     <div class="card-body fixed-scroll">
+                        @foreach($users as $user)
+                            <div class="form-group row">
+                                <div class="col-md-8"><a href="/profile/{{ $user->id }}">{{ $user->name }}</a></div>
+                                <div class="col-md-4">{{ $user->roles[0]->name }}</div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">Posts</div>
-                    <div class="card-body fixed-scroll" style="height: 800px;">
+                    <div class="card-body">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">Posts</div>
+                    <div class="card-body">
                     </div>
                 </div>
             </div>
