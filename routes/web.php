@@ -23,6 +23,11 @@ Route::get('/logout', function(){
 
 Route::group(['middleware' => 'auth'], function () {
 
+    Route::get('/', function(){
+        dd(123);
+    });
+
+
     Route::get('/dashboard', function () {
     })->name('dashboard');
 
