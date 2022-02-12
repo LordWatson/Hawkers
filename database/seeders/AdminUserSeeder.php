@@ -21,20 +21,21 @@ class AdminUserSeeder extends Seeder
 
         foreach(range(1,4) as $i){
             $fakeDate = $faker->dateTimeBetween('-1 week', '+1 week');
-            $adminUser = User::insert([
-                'name' => $faker->name,
-                'email' => $faker->email,
-                'password' => Hash::make('password'),
-                'created_at' => $fakeDate,
-                'updated_at' => $fakeDate,
-            ]);
 
-            $adminRole = UserRole::insert([
-                'user_id' => $adminUser->id,
-                'role_id' => 1,
-                'created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s"),
-            ]);
+            $adminUser = new User();
+            $adminUser->name = $faker->name;
+            $adminUser->email = $faker->email;
+            $adminUser->password = Hash::make('password');
+            $adminUser->created_at = $fakeDate;
+            $adminUser->updated_at = $fakeDate;
+            $adminUser->save();
+
+            $adminRole = new UserRole();
+            $adminRole->user_id = $adminUser->id;
+            $adminRole->role_id = 1;
+            $adminRole->created_at = date("Y-m-d H:i:s");
+            $adminRole->updated_at = date("Y-m-d H:i:s");
+            $adminRole->save();
         }
     }
 }

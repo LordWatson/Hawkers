@@ -30,12 +30,12 @@ class UserSeeder extends Seeder
             $user->updated_at = $fakeDate;
             $user->save();
 
-            $adminRole = new UserRole();
-            $adminRole->user_id = $user->id;
-            $adminRole->role_id = 4;
-            $adminRole->created_at = date("Y-m-d H:i:s");
-            $adminRole->updated_at = date("Y-m-d H:i:s");
-            $adminRole->save();
+            $userRole = new UserRole();
+            $userRole->user_id = $user->id;
+            $userRole->role_id = 4;
+            $userRole->created_at = date("Y-m-d H:i:s");
+            $userRole->updated_at = date("Y-m-d H:i:s");
+            $userRole->save();
         }
     }
 }
