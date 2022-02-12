@@ -40,6 +40,10 @@ Route::group(['middleware' => 'auth'], function () {
         \App\Models\User::count();
         dd(123);
     });
+
+
+    Route::resource('check-in-out', \App\Http\Controllers\CheckInCheckOutController::class);
+
 });
 
 require __DIR__.'/auth.php';
