@@ -1,12 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Post;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Repository\Post\PostInterface;
 use Illuminate\Http\Request;
-use function is_null;
-use function redirect;
 
 class PostController extends Controller
 {

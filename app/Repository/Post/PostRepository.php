@@ -3,7 +3,8 @@
 namespace App\Repository\Post;
 use App\Models\Post;
 
-class PostRepository implements PostInterface{
+class PostRepository implements PostInterface
+{
     public function getAll()
     {
         return Post::latest()->get();
@@ -13,7 +14,7 @@ class PostRepository implements PostInterface{
     {
         $post = new Post();
         $post->name = $data['name'];
-        $post->roll = $data['roll'];
+        $post->body = $data['body'];
         return $post->save();
     }
 
@@ -26,7 +27,7 @@ class PostRepository implements PostInterface{
     {
         $post = Post::find($id);
         $post->name = $data['name'];
-        $post->roll = $data['roll'];
+        $post->body = $data['body'];
         return $post->save();
     }
 

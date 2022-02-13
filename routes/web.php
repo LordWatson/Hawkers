@@ -29,8 +29,10 @@ Route::group(['middleware' => 'auth'], function () {
     })->name('dashboard');
     Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('user-dashboard');
     Route::get('/admin-dashboard', [\App\Http\Controllers\AdminDashboardController::class, 'index'])->name('admin-dashboard');
+
     Route::resource('check-in-out', \App\Http\Controllers\CheckInCheckOutController::class);
     Route::resource('post', \App\Http\Controllers\PostController::class);
+    Route::resource('role', \App\Http\Controllers\RoleController::class);
 
     Route::get('/vars', function(){
 
