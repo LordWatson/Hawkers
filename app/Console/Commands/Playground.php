@@ -2,11 +2,13 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Classes;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
+// This is just a place for me to test things (make sure relationships are working etc)
 class Playground extends Command
 {
     /**
@@ -40,7 +42,7 @@ class Playground extends Command
      */
     public function handle()
     {
-        $admin = Role::find(1)->users;
-        dd($admin);
+        $class = Classes::find(1);
+        dd($class->attendees);
     }
 }

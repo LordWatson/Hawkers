@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repository\Classes\ClassesInterface;
+use App\Repository\Classes\ClassesRepository;
 use App\Repository\Post\PostInterface;
 use App\Repository\Post\PostRepository;
 use App\Repository\Role\RoleInterface;
@@ -19,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(PostInterface::class,PostRepository::class);
         $this->app->bind(RoleInterface::class,RoleRepository::class);
+        $this->app->bind(ClassesInterface::class,ClassesRepository::class);
     }
 
     /**

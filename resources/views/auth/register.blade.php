@@ -2,7 +2,7 @@
 @section('page')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
                 <div class="card-body">
@@ -34,8 +34,8 @@
                             <label for="email" class="col-md-4 col-form-label">Account Type</label>
                             <div class="col-md-12">
                                 <select name="role" class="form-control @error('role') is-invalid @enderror" value="{{ old('role') }}">
-                                    <option value="3">Athlete</option>
-                                    <option value="4">Coach</option>
+                                    <option value="3">Coach</option>
+                                    <option value="4">Athlete</option>
                                 </select>
                                 @error('role')
                                 <span class="invalid-feedback" role="alert">
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                         <div class="form-group row mb-0 mt-4">
-                            <div class="col-md-12 offset-md-10">
+                            <div class="col-md-12 offset-md-9">
                                 <button type="submit" class="btn btn-secondary">
                                     {{ __('Register') }}
                                 </button>

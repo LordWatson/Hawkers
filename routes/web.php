@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('check-in-out', \App\Http\Controllers\CheckInCheckOutController::class);
     Route::resource('post', \App\Http\Controllers\PostController::class);
     Route::resource('role', \App\Http\Controllers\RoleController::class);
+    Route::resource('classes', \App\Http\Controllers\ClassesController::class);
 
     Route::get('/notifications', [\App\Http\Controllers\NotificationController::class, 'index'])->name('notifications');
 

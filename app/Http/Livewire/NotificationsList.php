@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use MongoDB\Driver\Session;
 
+// Doesn't make sense to use a Repository pattern for notifications since they are created using the facade and this is the only place they are interacted with
 class NotificationsList extends Component
 {
     public function render()

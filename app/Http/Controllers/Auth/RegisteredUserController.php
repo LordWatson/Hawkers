@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use App\Models\UserRole;
 use App\Notifications\UserRegistered;
@@ -58,7 +59,8 @@ class RegisteredUserController extends Controller
             'user_id' => Auth::id(),
         ]);
 
-        Notification::send(User::find(1), new UserRegistered(Auth::id()));
+        // Send notification to all Admin Users that a new user has registered
+        Notification::send(Role::find(1)->users, new UserRegistered(Auth::id()));
 
         return redirect(RouteServiceProvider::HOME);
     }
