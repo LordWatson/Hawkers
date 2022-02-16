@@ -25,3 +25,17 @@ nav{
 .fixed-scroll{
     overflow-y: scroll;
 }
+
+.fake-link{
+    span{
+        cursor: pointer;
+    }
+    span:hover{
+        text-decoration: underline;
+    }
+}
+
+.card{
+    margin-bottom: 1.5rem;
+    box-shadow: 2px 2px #c8c3c338;
+}

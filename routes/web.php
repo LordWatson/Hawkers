@@ -22,17 +22,14 @@ Route::get('/logout', function(){
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', function(){
-        dd(123);
-    });
-    Route::get('/dashboard', function () {
-    })->name('dashboard');
-    Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('user-dashboard');
+    Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('user-dashboard');
     Route::get('/admin-dashboard', [\App\Http\Controllers\AdminDashboardController::class, 'index'])->name('admin-dashboard');
 
     Route::resource('check-in-out', \App\Http\Controllers\CheckInCheckOutController::class);
     Route::resource('post', \App\Http\Controllers\PostController::class);
     Route::resource('role', \App\Http\Controllers\RoleController::class);
+
+    Route::get('/notifications', [\App\Http\Controllers\NotificationController::class, 'index'])->name('notifications');
 
     Route::get('/vars', function(){
 

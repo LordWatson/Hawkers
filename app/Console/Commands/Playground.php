@@ -40,10 +40,7 @@ class Playground extends Command
      */
     public function handle()
     {
-        $user = User::with(['roles' => function($q){
-            $q->where('name', 'admin');
-        }])->get();
-
-        dd($user);
+        $admin = Role::find(1)->users;
+        dd($admin);
     }
 }
