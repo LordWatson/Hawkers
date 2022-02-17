@@ -16,34 +16,26 @@ class RoleController extends Controller
 
     public function index()
     {
-        //
+        return $this->role->getAll();
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
-        $this->role->create($request);
-        return redirect($_SERVER['HTTP_REFERER'])
-            ->with('message', 'Role Created');
+        return $this->role->create($request);
     }
 
-    public function read($id)
+    public function show($id)
     {
-        $this->role->read($id);
-        return view('role.edit')
-            ->with('role', $this->role->read($id));
+        return $this->role->read($id);
     }
 
     public function update(Request $request, $id)
     {
-        $this->role->update($id, $request);
-        return redirect($_SERVER['HTTP_REFERER'])
-            ->with('message', 'Role Updated');
+        return $this->role->update($id, $request);
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
-        $this->role->delete($id);
-        return redirect($_SERVER['HTTP_REFERER'])
-            ->with('message', 'Role Deleted');
+        return $this->role->delete($id);
     }
 }

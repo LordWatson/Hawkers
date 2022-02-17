@@ -20,36 +20,26 @@ class ClassesController extends Controller
 
     public function index()
     {
-        return view('pages.classes.list')
-            ->with('title', $this->title);
+        return $this->class->getAll();
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
-        $this->class->create($request);
-        return redirect($_SERVER['HTTP_REFERER'])
-            ->with('message', 'Class Created');
+        return $this->class->create($request);
     }
 
-    public function read($id)
+    public function show($id)
     {
-        $this->class->read($id);
-        return view('pages.classes.edit')
-            ->with('class', $this->class->read($id))
-            ->with('title', $this->title);
+        return $this->class->read($id);
     }
 
     public function update(Request $request, $id)
     {
-        $this->class->update($id, $request);
-        return redirect($_SERVER['HTTP_REFERER'])
-            ->with('message', 'Class Updated');
+        return $this->class->update($id, $request);
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
-        $this->class->delete($id);
-        return redirect($_SERVER['HTTP_REFERER'])
-            ->with('message', 'Class Deleted');
+        return $this->class->delete($id);
     }
 }

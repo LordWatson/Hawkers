@@ -16,34 +16,26 @@ class PostController extends Controller
 
     public function index()
     {
-        //
+        return $this->post->getAll();
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
-        $this->post->create($request);
-        return redirect($_SERVER['HTTP_REFERER'])
-            ->with('message', 'Post Created');
+        return $this->post->create($request);
     }
 
-    public function read($id)
+    public function show($id)
     {
-        $this->post->read($id);
-        return view('post.edit')
-            ->with('post', $this->post->read($id));
+        return $this->post->read($id);
     }
 
     public function update(Request $request, $id)
     {
-        $this->post->update($id, $request);
-        return redirect($_SERVER['HTTP_REFERER'])
-            ->with('message', 'Post Updated');
+        return $this->post->update($id, $request);
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
-        $this->post->delete($id);
-        return redirect($_SERVER['HTTP_REFERER'])
-            ->with('message', 'Post Deleted');
+        return $this->post->delete($id);
     }
 }
