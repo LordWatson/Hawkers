@@ -38,7 +38,6 @@ Route::group(['middleware' => 'auth'], function () {
         \App\Models\User::count();
         dd(123);
     });
-
 });
 
 require __DIR__.'/auth.php';
