@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('role', \App\Http\Controllers\RoleController::class);
     Route::resource('classes', \App\Http\Controllers\ClassesController::class);
 
-    Route::get('/notifications', [\App\Http\Controllers\NotificationController::class, 'index'])->name('notifications');
+    Route::get('/notifications', [\App\Http\Controllers\NotificationController::class, 'bladeIndex'])->name('notifications');
 
     Route::get('/vars', function(){
 

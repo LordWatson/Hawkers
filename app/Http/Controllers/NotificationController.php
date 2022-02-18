@@ -2,46 +2,50 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Notification;
+use App\Repository\Classes\ClassesInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
-    /**
-     * @var string
-     */
-    private $title;
+    protected $notification;
 
-    public function __construct()
+    public function __construct(ClassesInterface $notification)
     {
-        $this->title = 'Notifications';
+        $this->notification = $notification;
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-
-    public function index(Request $request)
+    public function all()
     {
-        $sub_title = count(Auth::user()->unreadNotifications);
+        return Auth::user()->notifications;
+    }
 
-        $header_buttons = [
-            0 => [
-                'title' => 'Mark all as read',
-                'colour' => 'dark',
-                'type' => 'btn',
-                'id' => 'markAll',
-                'wire_click' => '',
-                'onclick' => '',
-            ],
-        ];
+    public function unread()
+    {
+        return Auth::user()->unreadNotifications;
+    }
 
-        return view('pages.notifications.list')
-            ->with('header_buttons', $header_buttons)
-            ->with('title', $this->title)
-            ->with('sub_title', $sub_title);
+    public function destroy($id)
+    {
+        $notification = Notification::find($id)->delete();
+
+        if($notification == 1){
+            return response([
+                'message' => 'Notification deleted successfully',
+            ], 201);
+        }
+
+        return $notification;
+    }
+
+    public function markAsRead($id)
+    {
+        // Effectively a soft delete on a Notification
+        // When read_at !null, it will not be returned in an unread get request
+        $notification = Notification::find($id);
+        $notification->read_at = date('Y-m-d H:i:s');
+
+        return $notification->update();
     }
 }

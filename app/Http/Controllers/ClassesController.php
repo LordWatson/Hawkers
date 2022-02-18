@@ -15,7 +15,6 @@ class ClassesController extends Controller
     public function __construct(ClassesInterface $class)
     {
         $this->class = $class;
-        $this->title = 'Classes';
     }
 
     public function index()

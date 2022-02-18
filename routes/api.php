@@ -21,5 +21,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::resource('classes', \App\Http\Controllers\ClassesController::class);
     Route::resource('roles', \App\Http\Controllers\RoleController::class);
 
+    Route::get('notifications/unread', [\App\Http\Controllers\NotificationController::class, 'unread']);
+    Route::get('notifications/all', [\App\Http\Controllers\NotificationController::class, 'all']);
+    Route::put('notifications/{id}/markAsRead', [\App\Http\Controllers\NotificationController::class, 'markAsRead']);
+    Route::delete('notifications/{id}/delete', [\App\Http\Controllers\NotificationController::class, 'destroy']);
+
     Route::post('/logout', [\App\Http\Controllers\Auth\ApiAuthController::class, 'logout']);
 });
