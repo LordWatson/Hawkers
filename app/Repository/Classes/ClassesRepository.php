@@ -8,7 +8,7 @@ class ClassesRepository implements ClassesInterface
 {
     public function getAll()
     {
-        return Classes::latest()->get();
+        return Classes::all();
     }
 
     public function create($data)
@@ -30,6 +30,14 @@ class ClassesRepository implements ClassesInterface
     public function read($id)
     {
         return Classes::find($id);
+    }
+
+    public function search($query)
+    {
+        return Classes::where('name', 'like', '%' . $query . '%')
+            ->orWhere(function($q) use ($query){
+                $q->where('description', 'like', '%' . $query . '%');
+            })->get();
     }
 
     public function update($id, $data)

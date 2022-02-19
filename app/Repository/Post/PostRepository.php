@@ -7,7 +7,7 @@ class PostRepository implements PostInterface
 {
     public function getAll()
     {
-        return Post::latest()->get();
+        return Post::all();
     }
 
     public function create($data)
@@ -23,6 +23,14 @@ class PostRepository implements PostInterface
     public function read($id)
     {
         return Post::find($id);
+    }
+
+    public function search($query)
+    {
+        return Post::where('name', 'like', '%' . $query . '%')
+            ->orWhere(function($q) use ($query){
+                $q->where('body', 'like', '%' . $query . '%');
+            })->get();
     }
 
     public function update($id, $data)

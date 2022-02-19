@@ -30,6 +30,11 @@ class RoleController extends Controller
         return $this->role->read($id);
     }
 
+    public function search($query)
+    {
+        return $this->role->search($query);
+    }
+
     public function update(Request $request, $id)
     {
         return $this->role->update($id, $request);

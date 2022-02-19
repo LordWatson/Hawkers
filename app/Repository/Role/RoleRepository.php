@@ -7,7 +7,7 @@ class RoleRepository implements RoleInterface
 {
     public function getAll()
     {
-        return Role::latest()->get();
+        return Role::all();
     }
 
     public function create($data)
@@ -22,6 +22,11 @@ class RoleRepository implements RoleInterface
     public function read($id)
     {
         return Role::find($id);
+    }
+
+    public function search($query)
+    {
+        return Role::where('name', 'like', '%' . $query . '%')->get();
     }
 
     public function update($id, $data)

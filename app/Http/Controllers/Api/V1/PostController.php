@@ -30,6 +30,11 @@ class PostController extends Controller
         return $this->post->read($id);
     }
 
+    public function search($query)
+    {
+        return $this->post->search($query);
+    }
+
     public function update(Request $request, $id)
     {
         return $this->post->update($id, $request);

@@ -32,6 +32,11 @@ class ClassesController extends Controller
         return $this->class->read($id);
     }
 
+    public function search($query)
+    {
+        return $this->class->search($query);
+    }
+
     public function update(Request $request, $id)
     {
         return $this->class->update($id, $request);

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions;
+namespace App\Action\Classes;
 
 use App\Models\ClassAttendee;
 use App\Models\Classes;
