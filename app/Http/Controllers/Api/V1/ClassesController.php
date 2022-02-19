@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Controller;
 use App\Models\Classes;
 use App\Repository\Classes\ClassesInterface;
 use Illuminate\Http\Request;
@@ -10,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 class ClassesController extends Controller
 {
     protected $class;
-    private $title;
 
     public function __construct(ClassesInterface $class)
     {

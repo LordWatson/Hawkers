@@ -14,6 +14,8 @@ class RoleRepository implements RoleInterface
     {
         $role = new Role();
         $role->name = $data['name'];
+        $role->created_at = date("Y-m-d H:i:s");
+        $role->updated_at = date("Y-m-d H:i:s");
         return $role->save();
     }
 
@@ -25,8 +27,9 @@ class RoleRepository implements RoleInterface
     public function update($id, $data)
     {
         $role = Role::find($id);
-        $role->name = $data['name'];
-        return $role->save();
+        $role->name = $data['name'] ?? $role->name;
+        $role->updated_at = date("Y-m-d H:i:s");
+        return $role->update();
     }
 
     public function delete($id)

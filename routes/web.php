@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/logout', function(){
+/*Route::get('/logout', function(){
     Auth::logout();
     return Redirect::to("/login")
         ->with('message', ['type' => 'success', 'text' => 'You have successfully logged out']);
@@ -38,6 +38,6 @@ Route::group(['middleware' => 'auth'], function () {
         \App\Models\User::count();
         dd(123);
     });
-});
+});*/
 
 require __DIR__.'/auth.php';

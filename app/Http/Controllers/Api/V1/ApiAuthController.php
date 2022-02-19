@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Role;
@@ -85,7 +85,7 @@ class ApiAuthController extends Controller
 
     public function logout(Request $request)
     {
-        // Delete current token
+        // Delete current token - I'd use this for a password reset
         //auth()->user()->currentAccessToken()->delete();
 
         // Delete all tokens

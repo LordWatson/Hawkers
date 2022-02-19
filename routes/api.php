@@ -14,17 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/register', [\App\Http\Controllers\Auth\ApiAuthController::class, 'register']);
-Route::post('/login', [\App\Http\Controllers\Auth\ApiAuthController::class, 'login']);
-
-Route::group(['middleware' => 'auth:sanctum'], function () {
-    Route::resource('classes', \App\Http\Controllers\ClassesController::class);
-    Route::resource('roles', \App\Http\Controllers\RoleController::class);
-
-    Route::get('notifications/unread', [\App\Http\Controllers\NotificationController::class, 'unread']);
-    Route::get('notifications/all', [\App\Http\Controllers\NotificationController::class, 'all']);
-    Route::put('notifications/{id}/markAsRead', [\App\Http\Controllers\NotificationController::class, 'markAsRead']);
-    Route::delete('notifications/{id}/delete', [\App\Http\Controllers\NotificationController::class, 'destroy']);
-
-    Route::post('/logout', [\App\Http\Controllers\Auth\ApiAuthController::class, 'logout']);
-});
+// This is the simplest way I can think of to separate API Route Versions
+// There is another way involving the RouteServiceProvider and mapping API routes with Middleware
+require __DIR__.'/api_v1.php';
+require __DIR__.'/api_v2.php';
