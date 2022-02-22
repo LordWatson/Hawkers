@@ -13,12 +13,10 @@ class Classes extends Model
     public function attendees()
     {
         return $this->belongsToMany(User::class, 'class_attendees')->where('type', '=', 'attendee');
-        //return $this->hasMany(User::class, 'user_id')->where('type', '=', 'attendee');
     }
 
     public function instructor()
     {
         return $this->belongsToMany(User::class, 'class_attendees')->where('type', '=', 'instructor');
-        //return $this->hasMany(User::class, 'user_id')->where('type', '=', 'instructor');
     }
 }

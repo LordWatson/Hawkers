@@ -18,7 +18,6 @@ class NutritionXApi{
         $this->apiKey = env('NUTRITIONX_API_KEY');
 
         $this->baseUrl = 'https://nutritionix-api.p.rapidapi.com/v1_1';
-
         $this->queryFields = '?fields=item_name,item_id,brand_name,nf_calories,nf_total_fat,nf_protein';
     }
 
@@ -35,7 +34,7 @@ class NutritionXApi{
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => [
                 "x-rapidapi-host: nutritionix-api.p.rapidapi.com",
-                "x-rapidapi-key: 36fdf376e8mshe2b448c1693c63ap1fa053jsn604bf09668fe",
+                "x-rapidapi-key: " . env('NUTRITIONX_API_KEY'),
             ]
         ]);
 
@@ -46,14 +45,15 @@ class NutritionXApi{
 
         if ($err) {
             return "cURL Error #:" . $err;
-        } else {
-            return $response;
         }
+
+        return $response;
     }
 
     function queryFoodItem($queryStr)
     {
         $query = urlencode($queryStr);
+
         return self::curl('/search/', $query);
     }
 }
