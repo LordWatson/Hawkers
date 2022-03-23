@@ -40,9 +40,6 @@ class ApiAuthController extends Controller
             'user_id' => $user->id,
         ]);
 
-        // Send notification to all Admin Users that a new user has registered
-        Notification::send(Role::find(1)->users, new UserRegistered($user->id));
-
         // Create access token
         $token = $user->createToken('hawkerstoken')->plainTextToken;
 

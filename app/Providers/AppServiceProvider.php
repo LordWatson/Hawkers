@@ -2,12 +2,15 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use App\Observers\V1\UserObserver;
 use App\Repository\Classes\ClassesInterface;
 use App\Repository\Classes\ClassesRepository;
 use App\Repository\Post\PostInterface;
 use App\Repository\Post\PostRepository;
 use App\Repository\Role\RoleInterface;
 use App\Repository\Role\RoleRepository;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -31,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        JsonResource::withoutWrapping();
+        User::observe(UserObserver::class);
     }
 }

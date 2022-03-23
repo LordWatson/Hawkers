@@ -10,11 +10,9 @@ use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
-    protected $notification;
-
-    public function __construct(ClassesInterface $notification)
+    public function __construct()
     {
-        $this->notification = $notification;
+        //
     }
 
     public function all()
@@ -48,5 +46,24 @@ class NotificationController extends Controller
         $notification->read_at = date('Y-m-d H:i:s');
 
         return $notification->update();
+    }
+
+    public function markAllAsRead()
+    {
+        // Get only IDs from unread notifications
+        $notifications = Auth::user()->unreadNotifications->pluck('id');
+
+        // Mark each notification as read
+        foreach($notifications as $notificaiton){
+            $notification = Notification::find($notificaiton);
+            $notification->read_at = date('Y-m-d H:i:s');
+            $notification->update();
+        }
+
+        $response = [
+            'message' => 'Marked all notifications as read',
+        ];
+
+        return response($response, 200);
     }
 }

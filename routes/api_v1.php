@@ -31,6 +31,7 @@ Route::group(['prefix' => 'v1'], function () {
 
         Route::group(['prefix' => 'notifications'], function () {
             Route::get('unread', [\App\Http\Controllers\Api\V1\NotificationController::class, 'unread']);
+            Route::put('markAllAsRead', [\App\Http\Controllers\Api\V1\NotificationController::class, 'markAllAsRead']);
             Route::get('all', [\App\Http\Controllers\Api\V1\NotificationController::class, 'all']);
             Route::put('{id}/markAsRead', [\App\Http\Controllers\Api\V1\NotificationController::class, 'markAsRead']);
             Route::delete('{id}/delete', [\App\Http\Controllers\Api\V1\NotificationController::class, 'destroy']);

@@ -58,6 +58,7 @@ class UserRegistered extends Notification
     public function toArray($notifiable)
     {
         return [
+            'type' => 'User Registered',
             'userRegistered' => $this->userRegistered,
             'message' => User::find($this->userRegistered)->name . ' has just signed up',
         ];
